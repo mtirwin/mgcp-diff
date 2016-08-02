@@ -7,7 +7,7 @@ tileReduce({
   zoom: 12,
   map: path.join(__dirname, 'diff.js'),
   sources: [
-    {name: 'osm-kiribati',   mbtiles: path.join(__dirname, 'osm-kiribati.mbtiles'), raw: true},
+    {name: 'osm',   mbtiles: path.join(__dirname, 'osm.mbtiles'), raw: true},
     {name: 'mgcp', mbtiles: path.join(__dirname, 'mgcp.mbtiles'), raw: true}
   ]
 })
