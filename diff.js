@@ -11,7 +11,7 @@ module.exports = function(data, tile, writeData, done) {
 
   // find mgcp parts that are not covered by streets within 10 pixels;
   // filter out chunks that are too short
-  var diff = linematch(mgcp, streets, 10).filter(filterShort);
+  var diff = linematch(streets, mgcp, 10).filter(filterShort);
 
   if (diff.length) {
     // write a feature with the diff as MultiLineString
