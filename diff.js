@@ -6,12 +6,12 @@ var lineclip = require('lineclip');
 module.exports = function(data, tile, writeData, done) {
 
   // filter and normalize input geometry
-  var mgcp = toLines(data.mgcp.mgcp);
-  var streets = toLines(data.osm.osm);
+  var mgcp = toLines(data.mgcp.mgcp, false);
+  var streets = toLines(data.osm.osm, true);
 
   // find mgcp parts that are not covered by streets within 10 pixels;
   // filter out chunks that are too short
-  var diff = linematch(streets, mgcp, 10).filter(filterShort);
+  var diff = linematch(mgcp, streets, 10).filter(filterShort);
 
   if (diff.length) {
     // write a feature with the diff as MultiLineString
@@ -50,7 +50,7 @@ function round(num) {
   return Math.round(num * 1e6) / 1e6;
 }
 
-function toLines(layer) {
+function toLines(layer, filter) {
   var lines = [];
   var bbox = [0, 0, 4096, 4096];
 
@@ -58,7 +58,9 @@ function toLines(layer) {
     var feature = layer.feature(i);
 
     // only consider polygon linestrings w OSM highway tag (drop "&& feature.properties.highway" when finding MGCP not in OSM)
-    if (feature.type === 2 && feature.properties.highway) {
+    if (feature.type === 2) {
+      if (filter && !feature.properties.highway) continue;
+
       var geom = feature.loadGeometry();
 
       for (var k = 0; k < geom.length; k++) {
