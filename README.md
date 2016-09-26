@@ -8,8 +8,8 @@ To run:
 * Update diff.js as necessary to reference local tilesets
 * `npm install && npm link`
 * `node index.js` will display geojson output in the terminal
-* `node index.js > output.geojson` will pipe output to a geojson file.
+* `node index.js > output.geojson` will pipe output to a geojson file
 
 Geojson may then be turned into vector tiles with tools like [tippecanoe](https://github.com/mapbox/tippecanoe).
 
-osm-not-in-mgcp.mbtiles and mgcp-not-in-osm.mbtiles are provided as sample outputs for viewing in a map client or locally with [mbview](https://github.com/mapbox/mbview).
+The output tilesets in this repo (osm-not-in-mgcp.mbtiles and mgcp-not-in-osm.mbtiles) are generated from geojson with tippecanoe and are provided as sample outputs for viewing in a map client or locally with [mbview](https://github.com/mapbox/mbview).
