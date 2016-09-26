@@ -12,4 +12,4 @@ To run:
 
 Geojson may then be turned into vector tiles with tools like [tippecanoe](https://github.com/mapbox/tippecanoe).
 
-The output tilesets in this repo (osm-not-in-mgcp.mbtiles and mgcp-not-in-osm.mbtiles) are generated from geojson with tippecanoe and are provided as sample outputs for viewing in a map client or locally with [mbview](https://github.com/mapbox/mbview).
+The output files in this repo (osm-not-mgcp.geojson and mgcp-not-osm.geojson) are provided as sample for viewing in a map client. Alternatively, convert to vector tiles with tippecanoe and view locally with [mbview](https://github.com/mapbox/mbview).
